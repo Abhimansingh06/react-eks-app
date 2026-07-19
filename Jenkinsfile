@@ -63,9 +63,11 @@ pipeline {
         }
 
         stage('Verify Deployment Status') {
-            steps {
-                sh 'kubectl rollout status deployment/react-eks-app'
-            }
+    steps {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
+            sh 'kubectl rollout status deployment/react-eks-app'
         }
+    }
+}
     }
 }
