@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'Node-js-26'
+    }
+
+
     environment {
         AWS_ACCOUNT_ID = '203994908990'
         AWS_REGION = 'ap-south-1'
